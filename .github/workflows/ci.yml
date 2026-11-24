@@ -20,7 +20,7 @@ jobs:
 
       - name: Validate expected value
         run: |
-          actual=10
+          actual=5
           expected=10
 
           if [ "$actual" -ne "$expected" ]; then
