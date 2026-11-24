@@ -1,0 +1,31 @@
+name: Branch Protection Demo
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validation:
+    name: Required CI Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate expected value
+        run: |
+          actual=10
+          expected=10
+
+          if [ "$actual" -ne "$expected" ]; then
+            echo "Validation failed"
+            exit 1
+          fi
+
+          echo "Validation passed"
